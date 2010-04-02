@@ -12,7 +12,8 @@ MANAGERS = ADMINS
 import os
 
 DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = os.path.join(__file__, os.pardir, "webdev.db")
+DATABASE_NAME = os.path.abspath(
+        os.path.join(__file__, os.pardir, "webdev.db"))
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -69,9 +70,17 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-)
+    'webdevcrawler.crawler',
+]
+
+try:
+    import django_evolution
+except ImportError:
+    pass
+else:
+    INSTALLED_APPS.append('django_evolution')
