@@ -1,7 +1,7 @@
 from django.db import models
 
 class Url(models.Model):
-    href = models.URLField(verify_exists=True)
+    href = models.URLField(verify_exists=True, unique=True)
     excluded = models.BooleanField(default=False)
 
     def __unicode__(self):
