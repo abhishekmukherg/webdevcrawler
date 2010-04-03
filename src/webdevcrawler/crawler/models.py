@@ -11,7 +11,7 @@ class Url(models.Model):
         app_label = 'crawler'
 
 class Keyword(models.Model):
-    word = models.CharField(max_length=128)
+    word = models.CharField(max_length=128, unique=True)
     urls = models.ManyToManyField(Url)
 
     def __unicode__(self):
