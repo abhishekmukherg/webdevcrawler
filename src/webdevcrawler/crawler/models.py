@@ -1,7 +1,7 @@
 from django.db import models
 
 class Url(models.Model):
-    href = models.CharField(max_length=512)
+    href = models.URLField(verify_exists=True)
     excluded = models.BooleanField(default=False)
 
 class Keyword(models.Model):
