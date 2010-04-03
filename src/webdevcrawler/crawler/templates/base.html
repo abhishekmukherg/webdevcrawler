@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebdevCrawler - {% block title %}Crawlerize it!{% endblock %}</title>
+  <meta charset="utf-8" />
+</head>
+<body>
+<div id="wrap">
+  <div id="header">
+    <ul id="navigation">
+      <li>Media: {{ MEDIA_URL }}</li>
+    </ul>
+  </div>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+  <div id="footer"></div>
+</div>
+</body>
+</html>

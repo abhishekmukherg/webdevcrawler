@@ -10,6 +10,7 @@ setup(
             'django',
             'distribute',
             'django_cas',
+            'BeautifulSoup',
         ],
         extras_require={
             'evolve': ['django-evolution']

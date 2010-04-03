@@ -1,1 +1,9 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Crawler{% endblock %}
+
+{% block content %}
+<form action="." method="POST">
+{{ form.as_table }}
+<input type="submit" />
+</form>
+{% endblock %}
