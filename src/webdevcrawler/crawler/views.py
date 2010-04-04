@@ -30,25 +30,7 @@ def crawl(request):
     if request.method == 'POST':
         form = CrawlForm(request.POST)
         if form.is_valid():
-            results = helpers.crawl_url(form.cleaned_data['url'])
-            for href, keywords in results.iteritems():
-                # Make sure all the keywords are in the db
-                keyword_obj = []
-                for keyword in keywords:
-                    try:
-                        m = Keyword.objects.get(word=keyword)
-                    except Keyword.DoesNotExist:
-                        m = Keyword(word=keyword)
-                        m.save()
-                    keyword_obj.append(m)
-                try:
-                    url = Url.objects.get(href=href)
-                except Url.DoesNotExist:
-                    url = Url(href=href)
-                    url.save()
-                for kw in keyword_obj:
-                    url.keyword_set.add(kw)
-                url.save()
+            helpers.make_urls_keywords(form.cleaned_data['url'])
             raise False
     else:
         form = CrawlForm()

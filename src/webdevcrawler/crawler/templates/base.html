@@ -8,7 +8,11 @@
 <div id="wrap">
   <div id="header">
     <ul id="navigation">
-      <li>Media: {{ MEDIA_URL }}</li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url django_cas.views.logout %}"/>Logout</a></li>
+      {% else %}
+      <li><a href="{% url django_cas.views.login %}"/>Login</a></li>
+      {% endif %}
     </ul>
   </div>
   <div id="content">

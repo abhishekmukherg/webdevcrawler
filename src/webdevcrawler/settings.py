@@ -86,6 +86,8 @@ INSTALLED_APPS = [
     'webdevcrawler.crawler',
 ]
 
+LOGIN_URL='/accounts/login/'
+
 CAS_SERVER_URL = 'https://login.rpi.edu/cas/login'
 
 try:
