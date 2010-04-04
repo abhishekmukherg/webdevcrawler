@@ -1,18 +1,18 @@
-import urllib2
-
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseForbidden
 from django.shortcuts import render_to_response, redirect
 from django.template import loader
 from django.template import RequestContext
-
-from BeautifulSoup import BeautifulSoup
+try:
+    from django.views.decorators.csrf import csrf_protect
+except ImportError:
+    csrf_protect = lambda x: x
 
 from webdevcrawler.crawler.forms import CrawlForm
 from webdevcrawler.crawler import helpers
-from webdevcrawler.crawler.models import Url, Keyword
 from webdevcrawler import settings
 
+@csrf_protect
 def crawl(request):
     # Make sure we're logged in
     if not request.user.is_authenticated():

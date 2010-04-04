@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load csrf_compat %}
 {% block title %}Crawler{% endblock %}
 
 {% block content %}
-<form action="." method="POST">
+<form action="." method="POST">{% csrf_token %}
 {{ form.as_table }}
 <input type="submit" />
 </form>
