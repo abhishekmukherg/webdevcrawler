@@ -10,6 +10,7 @@ from BeautifulSoup import BeautifulSoup
 
 from webdevcrawler.crawler.forms import CrawlForm
 from webdevcrawler.crawler import helpers
+from webdevcrawler.crawler.models import Url, Keyword
 from webdevcrawler import settings
 
 def crawl(request):
@@ -29,7 +30,26 @@ def crawl(request):
     if request.method == 'POST':
         form = CrawlForm(request.POST)
         if form.is_valid():
-            assert False, helpers.crawl_url(form.cleaned_data['url'])
+            results = helpers.crawl_url(form.cleaned_data['url'])
+            for href, keywords in results.iteritems():
+                # Make sure all the keywords are in the db
+                keyword_obj = []
+                for keyword in keywords:
+                    try:
+                        m = Keyword.objects.get(word=keyword)
+                    except Keyword.DoesNotExist:
+                        m = Keyword(word=keyword)
+                        m.save()
+                    keyword_obj.append(m)
+                try:
+                    url = Url.objects.get(href=href)
+                except Url.DoesNotExist:
+                    url = Url(href=href)
+                    url.save()
+                for kw in keyword_obj:
+                    url.keyword_set.add(kw)
+                url.save()
+            raise False
     else:
         form = CrawlForm()
     return render_to_response('crawler/crawl.html',
