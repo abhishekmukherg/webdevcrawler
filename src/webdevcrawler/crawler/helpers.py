@@ -7,7 +7,7 @@ from BeautifulSoup import BeautifulSoup
 from webdevcrawler.crawler.models import Url, Keyword
 
 
-def make_urls_keywords(url):
+def make_urls_keywords(url, limit_domain=None):
     try:
         url = Url.objects.get(href=url)
     except Url.DoesNotExist:
@@ -18,8 +18,12 @@ def make_urls_keywords(url):
         return False
     for href, keywords in results.iteritems():
         # Make sure all the keywords are in the db
+        if limit_domain is not None and \
+                not urlparse.urlsplit(href)[1].endswith(limit_domain):
+            continue
         keyword_obj = []
         for keyword in keywords:
+            keyword = keyword.lower()
             try:
                 m = Keyword.objects.get(word=keyword)
             except Keyword.DoesNotExist:

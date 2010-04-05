@@ -1,6 +1,8 @@
 import urllib2
+import time
 import urlparse
 import collections
+import sys
 
 from django.db import models
 
@@ -9,7 +11,7 @@ from BeautifulSoup import BeautifulSoup
 
 class Url(models.Model):
 
-    href = models.URLField(verify_exists=True, unique=True)
+    href = models.URLField(verify_exists=True, unique=True, db_index=True)
     excluded = models.BooleanField(default=False)
     etag = models.CharField(max_length=32)
 
@@ -30,7 +32,7 @@ class Url(models.Model):
             u = urllib2.urlopen(self.href)
         except urllib2.URLError:
             return
-        etag = u.info.get('ETag')
+        etag = u.info().get('ETag')
         if self.etag is not None:
             if etag == self.etag:
                 return False
@@ -62,7 +64,7 @@ class Url(models.Model):
 
 class Keyword(models.Model):
 
-    word = models.CharField(max_length=128, unique=True)
+    word = models.CharField(max_length=128, unique=True, db_index=True)
     urls = models.ManyToManyField(Url)
 
     def __unicode__(self):

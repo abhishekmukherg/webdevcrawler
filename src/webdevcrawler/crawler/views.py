@@ -30,8 +30,8 @@ def crawl(request):
     if request.method == 'POST':
         form = CrawlForm(request.POST)
         if form.is_valid():
-            helpers.make_urls_keywords(form.cleaned_data['url'])
-            raise False
+            helpers.make_urls_keywords(form.cleaned_data['url'],
+                    form.cleaned_data['limit_to_domain'] or None)
     else:
         form = CrawlForm()
     return render_to_response('crawler/crawl.html',
