@@ -10,6 +10,7 @@ except ImportError:
 
 from webdevcrawler.crawler.forms import CrawlForm
 from webdevcrawler.crawler import helpers
+from webdevcrawler.crawler import models
 from webdevcrawler import settings
 
 @csrf_protect

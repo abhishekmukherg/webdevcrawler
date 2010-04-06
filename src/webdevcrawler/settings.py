@@ -56,18 +56,31 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
-MIDDLEWARE_CLASSES = (
+def add_if_import(module, item, items):
+    try:
+        __import__(module)
+    except ImportError:
+        pass
+    else:
+        items.append(item)
+
+MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django_cas.middleware.CASMiddleware',
     'django.middleware.doc.XViewMiddleware',
-)
+]
+add_if_import('debug_toolbar',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+        MIDDLEWARE_CLASSES)
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'django_cas.backends.CASBackend',
 )
+
+INTERNAL_IPS = ('127.0.0.1',)
 
 ROOT_URLCONF = 'webdevcrawler.urls'
 
@@ -85,14 +98,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'webdevcrawler.crawler',
 ]
+add_if_import('django_evolution', 'django_evolution', INSTALLED_APPS)
+add_if_import('debug_toolbar', 'debug_toolbar', INSTALLED_APPS)
 
 LOGIN_URL='/accounts/login/'
 
 CAS_SERVER_URL = 'https://login.rpi.edu/cas/login'
-
-try:
-    import django_evolution
-except ImportError:
-    pass
-else:
-    INSTALLED_APPS.append('django_evolution')

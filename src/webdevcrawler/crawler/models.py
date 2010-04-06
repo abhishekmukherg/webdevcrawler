@@ -3,17 +3,26 @@ import time
 import urlparse
 import collections
 import sys
+import logging
 
 from django.db import models
 
-from BeautifulSoup import BeautifulSoup
+import BeautifulSoup
+
+
+log = logging.getLogger(__name__)
+
+
+class HeadRequest(urllib2.Request):
+    def get_method(self):
+        return "HEAD"
 
 
 class Url(models.Model):
 
     href = models.URLField(verify_exists=True, unique=True, db_index=True)
     excluded = models.BooleanField(default=False)
-    etag = models.CharField(max_length=32)
+    etag = models.CharField(max_length=32, null=True)
 
     def __unicode__(self):
         return unicode(self.href)
@@ -29,19 +38,27 @@ class Url(models.Model):
 
         """
         try:
-            u = urllib2.urlopen(self.href)
-        except urllib2.URLError:
+            u = urllib2.urlopen(HeadRequest(self.href))
+        except urllib2.URLError, urllib2.BadStatusLine:
             return
-        etag = u.info().get('ETag')
+        ct = u.info().getheader('content-type')
+        if 'text/html' not in ct:
+            log.debug("Not html, quitting")
+            return False
+        etag = u.info().getheader('etag')
         if self.etag is not None:
             if etag == self.etag:
+                log.debug("Etag equal, exiting")
                 return False
-            self.etag = etag
-        return self._crawl_string(u)
-
+        log.debug("Fetched etag {0}, had etag {1}".format(etag, self.etag))
+        self.etag = etag
+        return self._crawl_string(urllib2.urlopen(self.href))
 
     def _crawl_string(self, string):
-        soup = BeautifulSoup(string)
+        try:
+            soup = BeautifulSoup.BeautifulSoup(string)
+        except BeautifulSoup.HTMLParseError:
+            return False
         if soup is None:
             return False
         url_keywords = collections.defaultdict(set)
@@ -72,3 +89,5 @@ class Keyword(models.Model):
 
     class Meta:
         app_label = 'crawler'
+
+
