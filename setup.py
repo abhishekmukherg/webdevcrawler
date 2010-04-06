@@ -13,7 +13,8 @@ setup(
             'BeautifulSoup',
         ],
         extras_require={
-            'evolve': ['django-evolution']
+            'evolve': ['django-evolution'],
+            'debug': ['django-debug-toolbar'],
         },
         packages = find_packages('src'),
         package_dir = {'': 'src'},
