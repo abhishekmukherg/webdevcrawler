@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebdevCrawler - {% block title %}Crawlerize it!{% endblock %}</title>
+  <meta charset="utf-8" />
+</head>
+<body>
+<div id="wrap">
+  <div id="header">
+    <ul id="navigation">
+      {% if user.is_authenticated %}
+      <li><a href="{% url django_cas.views.logout %}"/>Logout</a></li>
+      {% else %}
+      <li><a href="{% url django_cas.views.login %}"/>Login</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+  <div id="footer"></div>
+</div>
+</body>
+</html>
