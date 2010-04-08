@@ -13,6 +13,9 @@
       {% else %}
       <li><a href="{% url django_cas.views.login %}"/>Login</a></li>
       {% endif %}
+      {% if user.is_staff %}
+      <li><a href="{% url admin:index %}">Admin</a></li>
+      {% endif %}
     </ul>
   </div>
   <div id="content">

@@ -1,9 +1,0 @@
-*.pyc
-*.pyo
-bin
-.*.sw*
-.installed.cfg
-develop-eggs
-eggs
-pip-log.txt
-*.egg-info
