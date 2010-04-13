@@ -5,8 +5,10 @@
   <meta charset="utf-8" />
 </head>
 <body>
+{% block body %}
 <div id="wrap">
   <div id="header">
+    {% block menu %}
     <ul id="navigation">
       {% if user.is_authenticated %}
       <li><a href="{% url django_cas.views.logout %}"/>Logout</a></li>
@@ -17,11 +19,13 @@
       <li><a href="{% url admin:index %}">Admin</a></li>
       {% endif %}
     </ul>
+    {% endblock %}
   </div>
   <div id="content">
     {% block content %}{% endblock %}
   </div>
   <div id="footer"></div>
 </div>
+{% endblock %}
 </body>
 </html>
