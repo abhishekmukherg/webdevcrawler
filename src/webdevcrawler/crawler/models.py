@@ -5,12 +5,28 @@ import collections
 import sys
 import logging
 
-from django.db import models
+from django.db import models, backend
 
 import BeautifulSoup
 
 
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
+
+
+def add_keepalive():
+    log.warn("Warning!")
+    try:
+        import urlgrabber.keepalive
+    except ImportError:
+        log.info("Could not find urlgrabber, using default opener")
+        pass
+    else:
+        log.info("Using keepalive handler to get urls")
+        keepalive_handler = urlgrabber.keepalive.HTTPHandler()
+        opener = urllib2.build_opener(keepalive_handler)
+        urllib2.install_opener(opener)
+add_keepalive()
 
 
 class HeadRequest(urllib2.Request):
@@ -71,7 +87,7 @@ class Url(models.Model):
             contents = a_tag.string
             if contents is None:
                 if a_tag.img is not None and a_tag.img.has_key('alt'):
-                        contents = a_tag.img['alt']
+                    contents = a_tag.img['alt']
             if contents is None:
                 continue
             url_keywords[href].add(contents)
