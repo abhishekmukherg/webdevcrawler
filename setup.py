@@ -12,9 +12,14 @@ setup(
             'django_cas',
             'BeautifulSoup',
         ],
+        dependency_links=[
+            'http://sourceforge.net/projects/mysql-python/files/',
+        ],
         extras_require={
             'evolve': ['django-evolution'],
             'debug': ['django-debug-toolbar'],
+            'keepalive': ['urlgrabber'],
+            'mysql': ['MySQL_python'],
         },
         packages = find_packages('src'),
         package_dir = {'': 'src'},
