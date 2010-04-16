@@ -55,7 +55,7 @@ class Url(models.Model):
         try:
             u = urllib2.urlopen(HeadRequest(self.href))
         except urllib2.URLError, urllib2.BadStatusLine:
-            return
+            return False
         ct = u.info().getheader('content-type')
         if 'text/html' not in ct:
             log.debug("Not html, quitting")

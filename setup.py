@@ -1,5 +1,9 @@
-from distribute_setup import use_setuptools
-use_setuptools()
+try:
+    from distribute_setup import use_setuptools
+except ImportError:
+    pass
+else:
+    use_setuptools()
 
 from setuptools import setup, find_packages
 
@@ -21,6 +25,9 @@ setup(
             'keepalive': ['urlgrabber'],
             'mysql': ['MySQL_python'],
         },
+        tests_require=[
+            'mox',
+        ],
         packages = find_packages('src'),
         package_dir = {'': 'src'},
 
