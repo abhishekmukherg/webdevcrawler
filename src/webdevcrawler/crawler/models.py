@@ -15,7 +15,6 @@ log = logging.getLogger(__name__)
 
 
 def add_keepalive():
-    log.warn("Warning!")
     try:
         import urlgrabber.keepalive
     except ImportError:

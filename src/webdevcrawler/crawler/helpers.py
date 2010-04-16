@@ -12,7 +12,7 @@ from webdevcrawler.crawler.models import Url, Keyword
 log = logging.getLogger(__name__)
 
 
-def make_urls_keywords(url, limit_domain):
+class _UrlManager(object):
     class UrlManager(object):
         def __init__(self):
             self._visited_url = set()
@@ -27,44 +27,47 @@ def make_urls_keywords(url, limit_domain):
             return x
         def __len__(self):
             return len(self._unvisited_url)
-    url_manager = UrlManager()
+
+
+def _get_or_create(cls, save=False, *args, **kwargs):
+    try:
+        obj = cls.objects.get(*args, **kwargs)
+    except cls.DoesNotExist:
+        obj = cls(*args, **kwargs)
+        if save:
+            obj.save()
+    return obj
+
+
+def _process_url(url_manager, limit_domain):
+    base_url_href = url_manager.pop()
+    log.debug("Doing {0}".format(base_url_href))
+    base_url = _get_or_create(Url, href=url_href)
+    results = base_url.crawl_url()
+    base_url.save()
+
+    if not results:
+        log.debug("No results returned from crawl_url")
+        return
+
+    for href, keywords in results.iteritems():
+        # Make sure all the keywords are in the db
+        if limit_domain is not None and \
+                not urlparse.urlsplit(href)[1].endswith(limit_domain):
+            continue
+        url_manager.add(href)
+        url = _get_or_create(Url, save=True, href=href)
+
+        for keyword in keywords:
+            keyword = keyword.lower()
+            m = _get_or_create(Keyword, save=True, word=keyword)
+            url.keyword_set.add(m)
+        url.save()
+
+
+def make_urls_keywords(url, limit_domain):
+    url_manager = _UrlManager()
     url_manager.add(url)
     while url_manager:
-        url = url_manager.pop()
-        log.debug("Doing {0}".format(url))
-        try:
-            url = Url.objects.get(href=url)
-        except Url.DoesNotExist:
-            log.debug("Making url")
-            url = Url(href=url)
-        results = url.crawl_url()
-        url.save()
-        if not results:
-            log.debug("No results returned from crawl_url")
-            continue
-        for href, keywords in results.iteritems():
-            # Make sure all the keywords are in the db
-            if limit_domain is not None and \
-                    not urlparse.urlsplit(href)[1].endswith(limit_domain):
-                continue
-            url_manager.add(href)
-            keyword_obj = []
-            for keyword in keywords:
-                keyword = keyword.lower()
-                try:
-                    m = Keyword.objects.get(word=keyword)
-                except Keyword.DoesNotExist:
-                    m = Keyword(word=keyword)
-                    m.save()
-                keyword_obj.append(m)
-            # Get url
-            try:
-                url = Url.objects.get(href=href)
-            except Url.DoesNotExist:
-                url = Url(href=href)
-                url.save()
-            # add keywords
-            for kw in keyword_obj:
-                url.keyword_set.add(kw)
-            url.save()
+        _process_url(url_manager, limit_domain)
     return True
