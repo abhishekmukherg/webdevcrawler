@@ -81,8 +81,9 @@ class Url(models.Model):
             if not a_tag.has_key('href'):
                 continue
             href = unicode(urlparse.urljoin(self.href, a_tag['href']))
-            if a_tag.has_key('alt'):
-                url_keywords[href].add(a_tag['alt'])
+            # Get anything attached to <a title=
+            if a_tag.has_key('title'):
+                url_keywords[href].add(a_tag['title'])
             contents = a_tag.string
             if contents is None:
                 if a_tag.img is not None and a_tag.img.has_key('alt'):
