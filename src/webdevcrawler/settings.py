@@ -11,11 +11,9 @@ MANAGERS = ADMINS
 
 import os
 
-DATABASE_ENGINE = 'mysql'
-DATABASE_NAME = 'webdev_final'
-DATABASE_HOST = 'localhost'
-DATABASE_USER = 'webdev_final'
-DATABASE_PASSWORD = 'webdev_final'
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = os.path.abspath(
+        os.path.join(__file__, os.pardir, "webdev.db"))
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
