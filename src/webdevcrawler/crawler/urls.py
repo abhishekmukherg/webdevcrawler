@@ -4,4 +4,5 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('webdevcrawler.crawler.views',
     (r'^crawl/', 'crawl'),
+    (r'^search/', 'search'),
 )

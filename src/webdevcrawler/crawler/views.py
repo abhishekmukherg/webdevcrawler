@@ -1,5 +1,10 @@
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
 from django.contrib.auth.decorators import user_passes_test
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, Http404, HttpResponse
 from django.shortcuts import render_to_response, redirect
 from django.template import loader
 from django.template import RequestContext
@@ -39,3 +44,13 @@ def crawl(request):
             { 'form': form, },
             context_instance=RequestContext(request),
         )
+
+def search(request, limit=10):
+    if 'q' not in request.GET:
+        raise Http404
+    results = map(lambda x: x['href'],
+                models.Url.objects.filter(
+                keyword__word__contains=request.GET['q']
+                ).values('href'))
+    return HttpResponse(json.dumps(results[:limit]),
+            mimetype='application/json')
