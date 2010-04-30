@@ -48,9 +48,10 @@ def crawl(request):
 def search(request, limit=10):
     if 'q' not in request.GET:
         raise Http404
-    results = map(lambda x: x['href'],
-                models.Url.objects.filter(
-                keyword__word__contains=request.GET['q']
-                )[:limit].values('href'))
+    results = map(
+            lambda x: {'href': x['href'], 'title': x['title'] or x['href']},
+            models.Url.objects.filter(
+            keyword__word__contains=request.GET['q']
+            )[:limit].values('href', 'title'))
     return HttpResponse(json.dumps(results),
             mimetype='application/json')
