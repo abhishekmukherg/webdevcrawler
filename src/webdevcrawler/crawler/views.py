@@ -51,6 +51,6 @@ def search(request, limit=10):
     results = map(lambda x: x['href'],
                 models.Url.objects.filter(
                 keyword__word__contains=request.GET['q']
-                ).values('href'))
-    return HttpResponse(json.dumps(results[:limit]),
+                )[:limit].values('href'))
+    return HttpResponse(json.dumps(results),
             mimetype='application/json')

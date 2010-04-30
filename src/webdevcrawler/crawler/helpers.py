@@ -13,20 +13,19 @@ log = logging.getLogger(__name__)
 
 
 class _UrlManager(object):
-    class UrlManager(object):
-        def __init__(self):
-            self._visited_url = set()
-            self._unvisited_url = set()
-        def add(self, url):
-            if url in self._visited_url:
-                return
-            self._unvisited_url.add(url)
-        def pop(self):
-            x = self._unvisited_url.pop()
-            self._visited_url.add(x)
-            return x
-        def __len__(self):
-            return len(self._unvisited_url)
+    def __init__(self):
+        self._visited_url = set()
+        self._unvisited_url = set()
+    def add(self, url):
+        if url in self._visited_url:
+            return
+        self._unvisited_url.add(url)
+    def pop(self):
+        x = self._unvisited_url.pop()
+        self._visited_url.add(x)
+        return x
+    def __len__(self):
+        return len(self._unvisited_url)
 
 
 def _get_or_create(cls, save=False, *args, **kwargs):
@@ -42,7 +41,7 @@ def _get_or_create(cls, save=False, *args, **kwargs):
 def _process_url(url_manager, limit_domain):
     base_url_href = url_manager.pop()
     log.debug("Doing {0}".format(base_url_href))
-    base_url = _get_or_create(Url, href=url_href)
+    base_url = _get_or_create(Url, href=base_url_href)
     results = base_url.crawl_url()
     base_url.save()
 

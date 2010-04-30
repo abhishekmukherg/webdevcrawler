@@ -35,6 +35,7 @@ class HeadRequest(urllib2.Request):
 
 class Url(models.Model):
 
+    title = models.CharField(max_length=255)
     href = models.URLField(verify_exists=True, unique=True, db_index=True)
     excluded = models.BooleanField(default=False)
     etag = models.CharField(max_length=32, null=True)
@@ -76,6 +77,8 @@ class Url(models.Model):
             return False
         if soup is None:
             return False
+        if soup.title is not None:
+            self.title = soup.title.string
         url_keywords = collections.defaultdict(set)
         for a_tag in soup.findAll('a'):
             if not a_tag.has_key('href'):
@@ -92,7 +95,6 @@ class Url(models.Model):
                 continue
             url_keywords[href].add(contents)
         return url_keywords
-
 
 
 class Keyword(models.Model):
