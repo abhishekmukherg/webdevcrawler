@@ -8,6 +8,7 @@ from django.http import HttpResponseForbidden, Http404, HttpResponse
 from django.shortcuts import render_to_response, redirect
 from django.template import loader
 from django.template import RequestContext
+from django.db import transaction
 try:
     from django.views.decorators.csrf import csrf_protect
 except ImportError:
@@ -19,6 +20,7 @@ from webdevcrawler.crawler import models
 from webdevcrawler import settings
 
 @csrf_protect
+@transaction.commit_manually
 def crawl(request):
     # Make sure we're logged in
     if not request.user.is_authenticated():
@@ -38,6 +40,7 @@ def crawl(request):
         if form.is_valid():
             helpers.make_urls_keywords(form.cleaned_data['url'],
                     form.cleaned_data['limit_to_domain'] or None)
+            transaction.commit()
     else:
         form = CrawlForm()
     return render_to_response('crawler/crawl.html',
@@ -51,7 +54,7 @@ def search(request, limit=10):
     results = map(
             lambda x: {'href': x['href'], 'title': x['title'] or x['href']},
             models.Url.objects.filter(
-            keyword__word__contains=request.GET['q']
+            keyword__word__contains=request.GET['q'].lower()
             )[:limit].values('href', 'title'))
     return HttpResponse(json.dumps(results),
             mimetype='application/json')

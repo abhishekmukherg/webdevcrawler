@@ -3,6 +3,7 @@ import collections
 import logging
 
 from django.db.models import Max
+from django.db import transaction
 
 from BeautifulSoup import BeautifulSoup
 
@@ -44,6 +45,7 @@ def _process_url(url_manager, limit_domain):
     base_url = _get_or_create(Url, href=base_url_href)
     results = base_url.crawl_url()
     base_url.save()
+    transaction.commit()
 
     if not results:
         log.debug("No results returned from crawl_url")
@@ -57,11 +59,14 @@ def _process_url(url_manager, limit_domain):
         url_manager.add(href)
         url = _get_or_create(Url, save=True, href=href)
 
-        for keyword in keywords:
-            keyword = keyword.lower()
+        for keyword in set(map(
+                lambda x: x[:Keyword._meta.get_field('word').max_length]
+                             .lower(),
+                keywords)):
             m = _get_or_create(Keyword, save=True, word=keyword)
             url.keyword_set.add(m)
         url.save()
+    transaction.commit()
 
 
 def make_urls_keywords(url, limit_domain):
