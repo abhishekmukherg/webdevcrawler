@@ -105,3 +105,8 @@ add_if_import('debug_toolbar', 'debug_toolbar', INSTALLED_APPS)
 LOGIN_URL='/accounts/login/'
 
 CAS_SERVER_URL = 'https://login.rpi.edu/cas/login'
+
+try:
+    from webdevcrawler.site_settings import *
+except ImportError:
+    pass
