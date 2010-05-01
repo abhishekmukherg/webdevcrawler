@@ -35,7 +35,7 @@ class HeadRequest(urllib2.Request):
 
 class Url(models.Model):
 
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, null=True, blank=True)
     href = models.URLField(verify_exists=True, unique=True, db_index=True)
     excluded = models.BooleanField(default=False)
     etag = models.CharField(max_length=32, null=True)
