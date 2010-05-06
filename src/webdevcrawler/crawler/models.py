@@ -59,6 +59,8 @@ class Url(models.Model):
             u = urllib2.urlopen(HeadRequest(self.href))
         except urllib2.URLError, urllib2.BadStatusLine:
             return False
+        if u.geturl() != self.href:
+            return False
         ct = u.info().getheader('content-type')
         if 'text/html' not in ct:
             log.debug("Not html, quitting")
@@ -70,6 +72,9 @@ class Url(models.Model):
                 return False
         log.debug("Fetched etag {0}, had etag {1}".format(etag, self.etag))
         self.etag = etag
+        u = urllib2.urlopen(self.href)
+        if u.geturl() != self.href:
+            return False
         return self._crawl_string(urllib2.urlopen(self.href))
 
     def _crawl_string(self, string):
