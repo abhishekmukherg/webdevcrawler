@@ -43,10 +43,12 @@ def crawl(request):
             transaction.commit()
     else:
         form = CrawlForm()
-    return render_to_response('crawler/crawl.html',
+    response = render_to_response('crawler/crawl.html',
             { 'form': form, },
             context_instance=RequestContext(request),
         )
+    transaction.commit()
+    return response
 
 def search(request, limit=10):
     if 'q' not in request.GET:
