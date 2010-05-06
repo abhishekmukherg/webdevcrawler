@@ -8,6 +8,8 @@ from django.http import HttpResponseForbidden, Http404, HttpResponse
 from django.shortcuts import render_to_response, redirect
 from django.template import loader
 from django.template import RequestContext
+from django.db.models import Count
+
 from django.db import transaction
 try:
     from django.views.decorators.csrf import csrf_protect
@@ -56,7 +58,10 @@ def search(request, limit=10):
     results = map(
             lambda x: {'href': x['href'], 'title': x['title'] or x['href']},
             models.Url.objects.filter(
-            keyword__word__contains=request.GET['q'].lower()
-            )[:limit].values('href', 'title'))
-    return HttpResponse(json.dumps(results),
-            mimetype='application/json')
+                keyword__word__contains=request.GET['q'].lower())
+                .annotate(Count('href'))
+                .order_by()[:limit]
+                .values('href', 'title'))
+    return HttpResponse("{callback}({json});".format(
+                                callback=request.GET['callback'],
+                                json=json.dumps(results)))
