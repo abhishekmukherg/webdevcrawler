@@ -41,6 +41,8 @@ class Url(models.Model):
     etag = models.CharField(max_length=32, null=True)
 
     def __unicode__(self):
+        if self.title:
+            return unicode(self.title)
         return unicode(self.href)
 
     class Meta:
