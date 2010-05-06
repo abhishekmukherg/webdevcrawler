@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>jQuery UI Example Page</title>
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	</head>
+	<body>
+	
+	<meta charset="UTF-8" />
+	<script type="text/javascript">
+	var cache = new Array();
+	$(function() {
+		
+		$("body").append("<div style='height:100%;width:100%;background-color:#000;opacity:0.7;position:absolute;top:0;left:0;' id='swoverlay'></div>");
+		$("body").append("<div style='height:400px;width:600px;margin-left:-300px;margin-top:-200px; -moz-border-radius:30px; overflow:auto;background-color:#fff;position:absolute;top:50%;left:50%;' id='swresults'><div align='center' style='margin:20px;'><input id='searchWidgetPanel' style='font-size:20px;'/></div><ul id='swresultslist'></ul></div>");
+		
+		$("#swoverlay").click(function(){ 
+			$("#swoverlay").fadeOut(); 
+			$("#swresults").fadeOut(); 
+			$('#searchWidget').val($('#searchWidgetPanel').val());
+		});
+		
+		var timeout = 0;
+		
+		$("#searchWidget").keyup(function(){
+			$('#searchWidgetPanel').val($(this).val());
+			clearTimeout(timeout);
+			timeout = setTimeout("updateResults('"+$(this).val()+"')", 300);
+		});
+		
+		$('#searchWidgetPanel').keyup(function(){
+			clearTimeout(timeout);
+			timeout = setTimeout("updateResults('"+$(this).val()+"')", 300);
+		});
+	});
+	function updateResults(query){
+		if(query == "")
+			return;
+		if(cache[query]){
+			parseResults(cache[query]);
+			return;
+		}
+		$.ajax({
+			url: "http://localhost:8000/search/",
+			dataType: "jsonp",
+			data: {
+				q: query
+			},
+			success: function(data) {
+				parseResults(data);
+				cache[query] = data;
+			}
+		});
+	}
+	
+	function parseResults(data){
+		$('#swresultslist').html("");
+		$("#swoverlay").fadeIn();
+		$("#swresults").fadeIn();
+		for each (result in data){
+			$('#swresultslist').append("<li><span class='swrltitle'>" + result.title + "</span><br /><a href='" + result.href + "'>" + result.href + "</a></li>");
+		}
+	}
+	</script>
+	<style>
+		#swresultslist li{
+			list-style-type: none;
+			margin:10px
+		}
+		#swresultslist li a{
+			text-decoration:none;
+			color:#228822;
+		}
+		#swresultslist li a:hover{
+			color:#f00;
+		}
+	</style>
+	<input id="searchWidget" />
+
+	
+	
+	</body>
+</html>
+
+
