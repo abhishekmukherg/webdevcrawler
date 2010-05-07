@@ -1,0 +1,897 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0015)http://rpi.edu/ -->
+
+
+
+
+<HTML>
+<HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <TITLE>Rensselaer Polytechnic Institute (RPI) :: Architecture, Business, Engineering, IT, Humanities, Science</TITLE>
+    <LINK href="./rpi_files/basic.css" rel="stylesheet" type="text/css" media="all">
+    <SCRIPT language="javascript">AC_FL_RunContent = 0;</SCRIPT>
+    <SCRIPT src="./rpi_files/AC_RunActiveContent.js" language="javascript"></SCRIPT>
+    <META http-equiv="description" content="Rensselaer Polytechnic Institute educates the leaders of tomorrow for technologically based careers. We celebrate discovery, and the responsible application of technology, to create knowledge and global prosperity.">
+    <META name="keywords" content="rensselaer, polytechnic, institute, rpi, university, graduate, engineering, architecture, science, humanities, business, research, biotechnology, nanotechnology, information technology, electronic arts, empac, troy, new york">
+    <SCRIPT type="text/javascript" src="./rpi_files/CSScriptLib.js"></SCRIPT>
+    <script type="text/javascript" src="jquerysw.js"></script>
+    <SCRIPT type="text/javascript"><!--
+    var preloadFlag = false;
+    function preloadImages() {
+    if (document.images) {
+    pre_homenav_r3_over_08 = newImage('graphic4/homenav-r3_over_08.gif');
+    pre_homenav_r3_over_09 = newImage('graphic4/homenav-r3_over_09.gif');
+    pre_homenav_r3_over_10 = newImage('graphic4/homenav-r3_over_10.gif');
+    pre_homenav_r3_over_11 = newImage('graphic4/homenav-r3_over_11.gif');
+    pre_homenav_r3_over_12 = newImage('graphic4/homenav-r3_over_12.gif');
+    pre_homenav_r3_over_13 = newImage('graphic4/homenav-r3_over_13.gif');
+    pre_homenav_r3_over_14 = newImage('graphic4/homenav-r3_over_14.gif');
+    pre_schoolhomenav_over_06 = newImage('graphic4/schoolhomenav_over_06.gif');
+    pre_schoolhomenav_over_07 = newImage('graphic4/schoolhomenav_over_07.gif');
+    pre_schoolhomenav_over_08 = newImage('graphic4/schoolhomenav_over_08.gif');
+    pre_schoolhomenav_over_09 = newImage('graphic4/schoolhomenav_over_09.gif');
+    pre_schoolhomenav_over_10 = newImage('graphic4/schoolhomenav_over_10.gif');
+    pre_schoolhomenav_over_11 = newImage('graphic4/schoolhomenav_over_11.gif');
+    pre_approach_homepage_sm_over = newImage('graphic/approach-homepage-sm_over.gif');
+    preloadFlag = true;
+    }
+    }
+
+    // --></SCRIPT>
+
+
+
+    <!-- our stuff -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>jQuery UI Example Page</title>
+    <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.custom.css" rel="stylesheet" />	
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
+    <meta charset="UTF-8" />
+    <!-- end our stuff -->
+
+</HEAD>
+
+
+<BODY onload="preloadImages();" bgcolor="#424242" link="black" vlink="#636363">
+	<!--	<form method="get" id="searchform" action="<?php bloginfo('url'); ?>/">
+		<div><input type="text" value="<?php the_search_query(); ?>" name="s" id="s" />
+		<input type="submit" id="searchsubmit" value="Search" />
+		</div>
+		</form> -->
+
+<!-- our stuff -->
+<script type="text/javascript">
+	$(function() {
+		function log(message) {
+			$("<div/>").text(message).prependTo("#log");
+			$("#log").attr("scrollTop", 0);
+		}
+		
+		$("#search_widget").autocomplete({
+			source: function(request, response) {
+				$.ajax({
+					url: "http://localhost:8000/search/",
+					dataType: "jsonp",
+					data: {
+						q: request.term
+					},
+					success: function(data) {
+						response($.map(data, function(item) {
+							return {
+								label: item.title,
+								value: item.href
+							}
+						}))
+					}
+				})
+			},
+			minLength: 2,
+			select: function(event, ui) {
+				log(ui.item ? ("Selected: " + ui.item.label) : "Nothing selected, input was " + this.value);
+			}
+		});
+	});
+</script>
+<style>
+    .ui-autocomplete-loading { background: url(indicator.gif) no-repeat right; }
+    #widget {
+    border-top-width: 1px; border-right-width: 1px;
+    border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid;
+    border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(126, 157, 185);
+    border-right-color: rgb(126, 157, 185); border-bottom-color: rgb(126, 157, 185);
+    border-left-color: rgb(126, 157, 185); padding-top: 2px; padding-right: 2px;
+    padding-bottom: 2px; padding-left: 2px;
+    background-attachment: initial; background-origin: initial; background-clip: initial;
+    background-color: rgb(255, 255, 255); background-position: 0% 50%; background-repeat: no-repeat no-repeat; 
+    }
+</style>
+<!-- end our stuff -->
+
+
+
+
+
+<DIV align="center">
+<FORM action="http://www.rpi.edu/site/search.html" id="cse-search-box">
+<TABLE width="959" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="3" width="10" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="960" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD bgcolor="#f7001f"><IMG src="./rpi_files/spacer.gif" alt="*" height="8" width="10" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="960" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD>
+<TABLE width="960" border="0" cellspacing="0" cellpadding="0" bgcolor="#2e2c27">
+<TBODY><TR>
+<TD width="278"><IMG class="body_11x15" src="./rpi_files/schoolhomenav_05.gif" alt="Rensselaer Polytechnic Institute" height="28" width="278" border="0"></TD>
+<TD width="107"><A title="School of Architecture" onmouseover="changeImages(&#39;schoolhomenav_06&#39;,&#39;graphic4/schoolhomenav_over_06.gif&#39;);return true" onmouseout="changeImages(&#39;schoolhomenav_06&#39;,&#39;graphic4/schoolhomenav_06.gif&#39;);return true" href="http://rpi.edu/academics/architecture.html"><IMG id="schoolhomenav_06" class="body_11x15" src="./rpi_files/schoolhomenav_06.gif" alt="Architecture" name="schoolhomenav_06" height="28" width="107" border="0"></A></TD>
+<TD width="73"><A title="Lally School of Management &amp; Technology" onmouseover="changeImages(&#39;schoolhomenav_07&#39;,&#39;graphic4/schoolhomenav_over_07.gif&#39;);return true" onmouseout="changeImages(&#39;schoolhomenav_07&#39;,&#39;graphic4/schoolhomenav_07.gif&#39;);return true" href="http://rpi.edu/academics/business.html"><IMG id="schoolhomenav_07" class="body_11x15" src="./rpi_files/schoolhomenav_07.gif" alt="Business" name="schoolhomenav_07" height="28" width="73" border="0"></A></TD>
+<TD width="98"><A title="School of Engineering" onmouseover="changeImages(&#39;schoolhomenav_08&#39;,&#39;graphic4/schoolhomenav_over_08.gif&#39;);return true" onmouseout="changeImages(&#39;schoolhomenav_08&#39;,&#39;graphic4/schoolhomenav_08.gif&#39;);return true" href="http://eng.rpi.edu/soe/"><IMG id="schoolhomenav_08" class="body_11x15" src="./rpi_files/schoolhomenav_08.gif" alt="Engineering" name="schoolhomenav_08" height="28" width="98" border="0"></A></TD>
+<TD width="20"><A title="Information Technology Programs" onmouseover="changeImages(&#39;schoolhomenav_09&#39;,&#39;graphic4/schoolhomenav_over_09.gif&#39;);return true" onmouseout="changeImages(&#39;schoolhomenav_09&#39;,&#39;graphic4/schoolhomenav_09.gif&#39;);return true" href="http://rpi.edu/academics/it.html"><IMG id="schoolhomenav_09" class="body_11x15" src="./rpi_files/schoolhomenav_09.gif" alt="IT" name="schoolhomenav_09" height="28" width="20" border="0"></A></TD>
+<TD width="90"><A title="School of Humanities, Arts, and Social Sciences" onmouseover="changeImages(&#39;schoolhomenav_10&#39;,&#39;graphic4/schoolhomenav_over_10.gif&#39;);return true" onmouseout="changeImages(&#39;schoolhomenav_10&#39;,&#39;graphic4/schoolhomenav_10.gif&#39;);return true" href="http://www.hass.rpi.edu/"><IMG id="schoolhomenav_10" class="body_11x15" src="./rpi_files/schoolhomenav_10.gif" alt="Humanities" name="schoolhomenav_10" height="28" width="90" border="0"></A></TD>
+<TD width="57"><A title="School of Science" onmouseover="changeImages(&#39;schoolhomenav_11&#39;,&#39;graphic4/schoolhomenav_over_11.gif&#39;);return true" onmouseout="changeImages(&#39;schoolhomenav_11&#39;,&#39;graphic4/schoolhomenav_11.gif&#39;);return true" href="http://science.rpi.edu/index.html"><IMG id="schoolhomenav_11" class="body_11x15" src="./rpi_files/schoolhomenav_11.gif" alt="Science" name="schoolhomenav_11" height="28" width="57" border="0"></A></TD>
+<TD width="68"><IMG src="./rpi_files/homepagesearch_12.gif" alt="" height="28" width="68" border="0"></TD>
+<TD align="center" valign="middle" width="165">
+<DIV align="center">
+    <INPUT type="hidden" name="cx" value="013771039018657924800:cjfn9nbyxhq">
+    <INPUT type="hidden" name="ie" value="UTF-8">
+    <INPUT type="hidden" name="cof" value="FORID:9">
+    <INPUT type="hidden" name="sa" value="Search">
+    
+    <!-- our stuff -->
+    <!-- old class: smalltext_9x11 and took out size="24" -->
+    <input class="widget" id="searchWidget" />
+    <!-- took our background-image: url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif); -->
+    
+    <!-- end our stuff -->
+    
+</DIV>
+</TD>
+<TD width="4"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="4" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+</TD>
+</TR>
+<TR>
+<TD>
+<TABLE width="960" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD valign="top" bgcolor="#949494">
+<SCRIPT language="javascript">
+    if (AC_FL_RunContent == 0) {
+        alert("This page requires AC_RunActiveContent.js.");
+    } else {
+        AC_FL_RunContent(
+        'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0',
+        'width', '960',
+        'height', '280',
+        'src', 'http://rpi.edu/homepage5',
+        'quality', 'best',
+        'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+        'align', 'middle',
+        'play', 'true',
+        'loop', 'false',
+        'scale', 'showall',
+        'wmode', 'transparent',
+        'devicefont', 'false',
+        'id', 'homepage5',
+        'bgcolor', '#666666',
+        'name', 'homepage5',
+        'menu', 'true',
+        'allowFullScreen', 'false',
+        'allowScriptAccess','sameDomain',
+        'movie', 'homepage5',
+        'salign', ''
+        ); //end AC code
+    }
+</SCRIPT>
+<EMBED width="960" height="280" src="http://rpi.edu/homepage5.swf" wmode="transparent" quality="best" pluginspage="http://www.macromedia.com/go/getflashplayer" align="middle" play="true" loop="false" scale="showall" devicefont="false" bgcolor="#666666" name="homepage5" menu="true" allowfullscreen="false" allowscriptaccess="sameDomain" salign="" type="application/x-shockwave-flash"> 
+<NOSCRIPT></NOSCRIPT>
+</TD></TR>
+</TBODY></TABLE>
+</TD>
+</TR>
+<TR>
+<TD>
+<TABLE width="960" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+    <TD><A title="About Rensselaer Polytechnic Institute" onmouseover="changeImages(&#39;about&#39;,&#39;graphic4/homenav-r3_over_08.gif&#39;);return true" onmouseout="changeImages(&#39;about&#39;,&#39;graphic4/homenav-r3_08.gif&#39;);return true" href="http://rpi.edu/about/index.html"><IMG id="about" class="body_11x15" src="./rpi_files/homenav-r3_08.gif" alt="About Rensselaer" name="about" height="33" width="171" border="0"></A></TD>
+    <TD><A title="Academics and Degrees" onmouseover="changeImages(&#39;academics&#39;,&#39;graphic4/homenav-r3_over_09.gif&#39;);return true" onmouseout="changeImages(&#39;academics&#39;,&#39;graphic4/homenav-r3_09.gif&#39;);return true" href="http://rpi.edu/academics/index.html"><IMG id="academics" class="body_11x15" src="./rpi_files/homenav-r3_09.gif" alt="Academics and Degrees" name="academics" height="33" width="125" border="0"></A></TD>
+    <TD><A title="Rensselaer Research" onmouseover="changeImages(&#39;research&#39;,&#39;graphic4/homenav-r3_over_10.gif&#39;);return true" onmouseout="changeImages(&#39;research&#39;,&#39;graphic4/homenav-r3_10.gif&#39;);return true" href="http://rpi.edu/research/index.html"><IMG id="research" class="body_11x15" src="./rpi_files/homenav-r3_10.gif" alt="Research at Rensselaer" name="research" height="33" width="108" border="0"></A></TD>
+    <TD><A title="Student Life and Services" onmouseover="changeImages(&#39;studentlife&#39;,&#39;graphic4/homenav-r3_over_11.gif&#39;);return true" onmouseout="changeImages(&#39;studentlife&#39;,&#39;graphic4/homenav-r3_11.gif&#39;);return true" href="http://rpi.edu/student_life/index.html"><IMG id="studentlife" class="body_11x15" src="./rpi_files/homenav-r3_11.gif" alt="Student Life and Services" name="studentlife" height="33" width="129" border="0"></A></TD>
+    <TD><A title="Rensselaer Admissions" onmouseover="changeImages(&#39;admissions&#39;,&#39;graphic4/homenav-r3_over_12.gif&#39;);return true" onmouseout="changeImages(&#39;admissions&#39;,&#39;graphic4/homenav-r3_12.gif&#39;);return true" href="http://www.rpi.edu/dept/admissions/index.html"><IMG id="admissions" class="body_11x15" src="http://rpi.edu/graphic4/homenav-r3_over_12.gif" alt="Rensselaer Admissions" name="admissions" height="33" width="129" border="0"></A></TD>
+    <TD><A title="News and Events" onmouseover="changeImages(&#39;news&#39;,&#39;graphic4/homenav-r3_over_13.gif&#39;);return true" onmouseout="changeImages(&#39;news&#39;,&#39;graphic4/homenav-r3_13.gif&#39;);return true" href="http://rpi.edu/news/index.html"><IMG id="news" class="body_11x15" src="./rpi_files/homenav-r3_13.gif" alt="News and Events" name="news" height="33" width="174" border="0"></A></TD>
+    <TD><A title="Virtual Campus Tour" onmouseover="changeImages(&#39;tour&#39;,&#39;graphic4/homenav-r3_over_14.gif&#39;);return true" onmouseout="changeImages(&#39;tour&#39;,&#39;graphic4/homenav-r3_14.gif&#39;);return true" href="http://rpi.edu/tour/index.html"><IMG id="tour" class="body_11x15" src="./rpi_files/homenav-r3_14.gif" alt="Virtual Campus Tour" name="tour" height="33" width="124" border="0"></A></TD>
+</TR>
+</TBODY></TABLE>
+</TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="960" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD align="left" valign="top" bgcolor="white" width="280">
+<TABLE width="280" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+</TR>
+<TR>
+<TD><IMG class="body_11x15" src="./rpi_files/rpilogo6_22.gif" alt="Rensselaer Polytechnic Institute - why not change the world?" height="67" width="280" border="0"></TD>
+</TR>
+<TR>
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="15" width="10" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="280" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD valign="top" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="12" width="19" border="0"></TD>
+<TD valign="top" width="260">
+<SCRIPT language="javascript">
+if (AC_FL_RunContent == 0) {
+alert("This page requires AC_RunActiveContent.js.");
+} else {
+AC_FL_RunContent(
+'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0',
+'width', '260',
+'height', '220',
+'src', 'rpimultimedia-4',
+'quality', 'best',
+'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+'align', 'middle',
+'play', 'true',
+'loop', 'true',
+'scale', 'showall',
+'wmode', 'transparent',
+'devicefont', 'false',
+'id', 'rpimultimedia-4',
+'bgcolor', '#ffffff',
+'name', 'rpimultimedia-4',
+'menu', 'true',
+'allowFullScreen', 'false',
+'allowScriptAccess','sameDomain',
+'movie', 'rpimultimedia-4',
+'salign', ''
+); //end AC code
+}
+</SCRIPT><EMBED width="260" height="220" src="rpimultimedia-4.swf" quality="best" pluginspage="http://www.macromedia.com/go/getflashplayer" align="middle" play="true" loop="true" scale="showall" wmode="transparent" devicefont="false" bgcolor="#ffffff" name="rpimultimedia-4" menu="true" allowfullscreen="false" allowscriptaccess="sameDomain" salign="" type="application/x-shockwave-flash"> 
+<NOSCRIPT></NOSCRIPT>
+</TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="280" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="20">
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="20" width="10" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="280" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD align="left" valign="top" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="19" border="0"></TD>
+<TD colspan="2" align="left" valign="top" width="260"><A title="The Approach Blog" onmouseover="changeImages(&#39;approach_homepage&#39;,&#39;graphic/approach-homepage-sm_over.gif&#39;);return true" onmouseout="changeImages(&#39;approach_homepage&#39;,&#39;graphic/approach-homepage-sm.gif&#39;);return true" href="http://approach.rpi.edu/"><IMG id="approach_homepage" class="body_11x15" src="./rpi_files/approach-homepage-sm.gif" alt="The Approach Blog" name="approach_homepage" height="48" width="200" border="0"></A></TD>
+</TR>
+<TR>
+<TD align="left" valign="top" width="20">
+<TD align="left" valign="top" width="4"><IMG src="./rpi_files/spacer.gif" alt="*" height="2" width="4" border="0"></TD>
+<TD width="256">
+</TR>
+<TR>
+<TD align="left" valign="top" width="20">
+<TD align="left" valign="top" width="4"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="4" border="0"></TD>
+<TD class="subhead_11x13" width="256"><A title="Rensselaer&#39;s Research Blog" href="http://approach.rpi.edu/">Discovery, Innovation, &amp; Imagination<BR>
+
+at Rensselaer Polytechnic Institute</A></TD>
+</TR>
+</TBODY></TABLE>
+
+<TABLE width="280" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD colspan="8" width="274"><IMG src="./rpi_files/spacer.gif" alt="*" height="15" width="10" border="0"></TD>
+<TD width="6">
+</TR>
+<TR>
+<TD width="20">
+<TD align="center" valign="middle" width="62"><A title="Audio Podcasts" href="http://rpi.edu/news/podcasts.html"><IMG src="./rpi_files/media-podcast.gif" alt="" width="24" height="24" border="0"></A></TD>
+<TD width="2"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="2" border="0"></TD>
+<TD align="center" valign="middle" width="62"><A title="Rensselaer&#39;s Alumni Facebook page" href="http://www.facebook.com/pages/Troy-NY/Rensselaer-Polytechnic-Institute/43911742356"><IMG src="./rpi_files/media_facebook.gif" alt="" width="24" height="24" border="0"></A></TD>
+<TD width="2"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="2" border="0"></TD>
+<TD align="center" valign="middle" width="62"><A title="Follow RPI News on Twitter" href="http://twitter.com/rpinews"><IMG src="./rpi_files/media_twitter.gif" alt="" width="24" height="24" border="0"></A></TD>
+<TD width="2"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="2" border="0"></TD>
+<TD align="center" valign="middle" width="62"><A title="RSS (XML) News Links" href="http://rpi.edu/news/rss.html"><IMG src="./rpi_files/media_rss.gif" alt="" width="24" height="24" border="0"></A></TD>
+<TD align="center" valign="middle" width="6"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="6" border="0"></TD>
+</TR>
+<TR>
+<TD colspan="8" width="274"><IMG src="./rpi_files/spacer.gif" alt="*" height="4" width="20" border="0"></TD>
+<TD width="6">
+</TR>
+<TR>
+<TD width="20">
+<TD class="subhead_11x13" align="center" width="62"><A title="Audio Podcasts" href="http://rpi.edu/news/podcasts.html">Podcasts</A></TD>
+<TD width="2">
+<TD class="subhead_11x13" align="center" width="62"><A title="Rensselaer&#39;s Alumni Facebook page" href="http://www.facebook.com/pages/Troy-NY/Rensselaer-Polytechnic-Institute/43911742356">Facebook</A></TD>
+<TD width="2">
+<TD class="subhead_11x13" align="center" width="62"><A title="Follow RPI News on Twitter" href="http://twitter.com/rpinews">Twitter</A></TD>
+<TD width="2">
+<TD class="subhead_11x13" align="center" width="62"><A title="RSS (XML) News Links" href="http://rpi.edu/news/rss.html">RSS</A></TD>
+<TD class="subhead_11x13" align="center" width="6">
+</TR>
+</TBODY></TABLE>
+<TABLE width="280" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD valign="top" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="20" border="0"></TD>
+<TD valign="top" width="240"><IMG src="./rpi_files/spacer.gif" alt="*" height="22" width="10" border="0"></TD>
+<TD valign="top" width="20">
+</TR>
+<TR>
+<TD valign="top" width="20">
+<TD colspan="2" valign="top" width="260"><A title="Rensselaer News" href="http://rpi.edu/news/index.html"><IMG src="./rpi_files/homepagecat-v6_33.gif" alt="Rensselaer News" height="18" width="147" border="0"></A></TD>
+</TR>
+<TR>
+<TD valign="top" width="20">
+<TD valign="top" width="240"><IMG src="./rpi_files/spacer.gif" alt="*" height="12" width="10" border="0"></TD>
+<TD valign="top" width="20">
+</TR>
+<TR>
+<TD valign="top" width="20">
+<TD class="subhead_12x16" valign="top" width="240">
+<DIV align="center">
+<TABLE width="240" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD class="content" align="left" valign="top" width="20"><IMG class="body_11x15" src="./rpi_files/newsheadlinebullet-red.gif" alt="*" height="20" width="20" border="0"></TD>
+<TD class="content" align="left" valign="top" width="220"><A title="Rensselaer Appoints Veteran Development Executive as New Vice President for Institute Advancement" href="http://news.rpi.edu/update.do?artcenterkey=2717">Rensselaer Appoints Veteran Development Executive as New Vice President for Institute Advancement</A></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20">
+<TD class="content" align="left" valign="top" width="220"><IMG src="./rpi_files/spacer.gif" alt="*" height="13" width="9" border="0"></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20"><IMG class="body_11x15" src="./rpi_files/newsheadlinebullet-red.gif" alt="*" height="20" width="20" border="0"></TD>
+<TD class="content" align="left" valign="top" width="220"><A title="Graphene Outperforms Carbon Nanotubes for Creating Stronger, More Crack-Resistant Materials" href="http://news.rpi.edu/update.do?artcenterkey=2715">Graphene Outperforms Carbon Nanotubes for Creating Stronger, More Crack-Resistant Materials</A></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20">
+<TD class="content" align="left" valign="top" width="220"><IMG src="./rpi_files/spacer.gif" alt="*" height="13" width="9" border="0"></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20"><IMG class="body_11x15" src="./rpi_files/newsheadlinebullet-red.gif" alt="*" height="20" width="20" border="0"></TD>
+<TD class="content" align="left" valign="top" width="220"><A title="Rensselaer Polytechnic Institute Inducts New Members Into Phalanx Honor Society" href="http://news.rpi.edu/update.do?artcenterkey=2716">Rensselaer Inducts New Members Into Phalanx Honor Society</A></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20">
+<TD align="left" valign="top" width="220"><IMG src="./rpi_files/spacer.gif" alt="*" height="13" width="9" border="0"></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20"><IMG class="body_11x15" src="./rpi_files/newsheadlinebullet-red.gif" alt="*" height="20" width="20" border="0"></TD>
+<TD class="content" align="left" valign="top" width="220"><A title="Rensselaer Featured by The Princeton Review and U.S. Green Building Council in &ldquo;Guide to 286 Green Colleges&rdquo;" href="http://news.rpi.edu/update.do?artcenterkey=2714">Rensselaer Featured in “Guide to 286 Green Colleges”</A></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20">
+<TD align="left" valign="top" width="220"><IMG src="./rpi_files/spacer.gif" alt="*" height="13" width="9" border="0"></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20"><IMG class="body_11x15" src="./rpi_files/greenrpibullet.gif" alt="*" height="20" width="20" border="0"></TD>
+<TD class="content" align="left" valign="top" width="220"><A title="Students Using Solar Power To Create Sustainable Solutions for Haiti, Peru" href="http://green.rpi.edu/archives/esw/index.html">Students Using Solar Power To Create Sustainable Solutions for Haiti, Peru</A></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20">
+<TD align="left" valign="top" width="220"><IMG src="./rpi_files/spacer.gif" alt="*" height="13" width="9" border="0"></TD>
+</TR>
+<TR>
+<TD class="content" align="left" valign="top" width="20"><IMG class="body_11x15" src="./rpi_files/greenrpibullet.gif" alt="*" height="20" width="20" border="0"></TD>
+<TD class="content" align="left" valign="top" width="220"><A title="Green@Rensselaer: Order Up! &ndash; Sustainable Dining Options Increase at Rensselaer" href="http://green.rpi.edu/archives/sustainable_dining/index.html">Order Up! – Sustainable Dining Options Increase at Rensselaer</A></TD>
+</TR>
+<TR>
+<TD align="left" valign="top" width="20">
+<TD align="left" valign="top" width="220"><IMG src="./rpi_files/spacer.gif" alt="*" height="14" width="11" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+</DIV>
+</TD>
+<TD class="subhead_12x15" valign="top" width="20">
+</TR>
+</TBODY></TABLE>
+</TD>
+<TD align="left" valign="top" bgcolor="white" width="680">
+<TABLE width="680" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD valign="top" width="3"><IMG src="./rpi_files/spacer.gif" alt="" height="64" width="3" border="0"></TD>
+<TD align="center" valign="top" width="410">
+<TABLE width="410" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD valign="top" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="22" width="20" border="0"></TD>
+<TD colspan="2" valign="top" width="380">
+<TD valign="top" width="10">
+</TR>
+<TR height="240">
+<TD valign="top" width="20" height="240">
+<TD colspan="3" valign="top" width="390" height="240"><A title="Bare Discrepancies: Nude-Colored Hospital Gowns Could Help Doctors Better Detect Hard-To-See Symptoms" href="http://news.rpi.edu/update.do?artcenterkey=2718"><IMG class="body_11x15" src="./rpi_files/hospitalgown-changizi-390.jpg" alt="Bare Discrepancies: Nude-Colored Hospital Gowns Could Help Doctors Better Detect Hard-To-See Symptoms" height="240" width="390" border="0"></A></TD>
+</TR>
+<TR>
+<TD valign="top" width="20">
+<TD valign="top" width="4"><IMG src="./rpi_files/spacer.gif" alt="*" height="12" width="4" border="0"></TD>
+<TD valign="top" width="376">
+<TD valign="top" width="10"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+</TR>
+<TR>
+<TD valign="top" width="20">
+<TD valign="top" width="4">
+<TD class="headline_24x27" valign="top" width="376">
+<P><A class="headline_24x27" title="Bare Discrepancies: Nude-Colored Hospital Gowns Could Help Doctors Better Detect Hard-To-See Symptoms" href="http://news.rpi.edu/update.do?artcenterkey=2718"><SPAN class="headline_24x27">Bare Discrepancies: Nude-Colored Hospital Gowns Could Help Doctors Better Detect Hard-To-See Symptoms</SPAN></A></P>
+</TD>
+<TD valign="top" width="10">
+</TR>
+<TR>
+<TD valign="top" width="20">
+<TD valign="top" width="4">
+<TD valign="top" width="376"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="10" border="0"></TD>
+<TD valign="top" width="10">
+</TR>
+<TR>
+<TD valign="top" width="20">
+<TD valign="top" width="4">
+<TD class="pagehead_15x18" valign="top" width="376">Though Human Eyes Have Evolved To See Other People Blush, Our Eyes Need Assistance To Spot Health-Related Changes in Skin Color Such as Cyanosis</TD>
+<TD class="pagehead_16x20" valign="top" width="10">
+</TR>
+<TR>
+<TD valign="top" width="20">
+<TD valign="top" width="4">
+<TD valign="top" width="376"><IMG src="./rpi_files/spacer.gif" alt="*" height="11" width="10" border="0"></TD>
+<TD valign="top" width="10">
+</TR>
+<TR>
+<TD class="body_11x15" valign="top" width="20">
+<TD class="body_11x15" valign="top" width="4">
+<TD class="body_11x18" valign="top" width="376">
+<P>Changing the hue of hospital gowns and bed sheets to match a patient’s skin color could greatly enhance a physician’s ability to detect cyanosis and other health-related skin color changes, according to a new study from Rensselaer Polytechnic Institute.</P>
+<P>“If a doctor sees a patient, and then sees the patient again later, the doctor will have little or no idea whether the patient’s skin has changed color,” said neurobiologist and study leader <A href="http://www.changizi.com/">Mark Changizi</A>, assistant professor in the <A href="http://www.cogsci.rpi.edu/">Department of Cognitive Science</A> at Rensselaer. “Small shifts in skin color can have tremendous medical implications, and we have proposed a few simple tools – skin-colored gowns, sheets, and adhesive tabs – that could better arm physicians to make more accurate diagnoses.”</P>
+<P>Human eyes evolved to see in color largely for the purpose of detecting skin color changes such as when other people blush, Changizi said. These emotive skin color changes are extremely apparent because humans are hard-wired to notice them, and because the background skin color remains unchanged. The contrast against the nearby “baseline” skin color is what makes blushes so noticeable, he said.&nbsp;<A title="Bare Discrepancies: Nude-Colored Hospital Gowns Could Help Doctors Better Detect Hard-To-See Symptoms" href="http://news.rpi.edu/update.do?artcenterkey=2718">Full Article</A></P>
+</TD>
+<TD class="body_11x15" valign="top" width="10">
+</TR>
+<TR>
+<TD valign="top" width="20">
+<TD valign="top" width="4">
+<TD valign="top" width="376"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD valign="top" width="10">
+</TR>
+</TBODY></TABLE>
+</TD>
+<TD valign="top" width="267">
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="16" width="10" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+<DIV align="center">
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD class="body_10x13" align="left" valign="middle" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="20" border="0"></TD>
+<TD class="body_10x13" align="left" valign="middle" width="83"><A title="RPIAlert Emergency Notification System" href="http://alert.rpi.edu/"><IMG class="body_11x13" src="./rpi_files/rpialert-24px.gif" alt="RPIAlert" width="83" height="24" border="0"></A></TD>
+<TD class="body_10x13" align="left" valign="middle" width="8"><IMG src="./rpi_files/spacer.gif" alt="*" height="8" width="8" border="0"></TD>
+<TD class="smalltext_9x11" rowspan="2" align="left" valign="bottom" width="136">
+<DIV align="left">
+<A title="RPIAlert Emergency Notification System" href="http://alert.rpi.edu/">Emergency <BR>
+
+Notification System</A></DIV>
+</TD>
+<TD class="body_10x13" align="left" valign="middle" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="20" border="0"></TD>
+</TR>
+<TR>
+<TD align="left" valign="middle" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="2" width="10" border="0"></TD>
+<TD class="body_10x13" align="left" valign="middle" width="83">
+<TD class="body_10x13" align="left" valign="middle" width="8">
+<TD valign="middle" width="20">
+</TR>
+</TBODY></TABLE>
+</DIV>
+
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="20">
+<TD width="247"><IMG src="./rpi_files/spacer.gif" alt="*" height="4" width="10" border="0"></TD>
+</TR>
+<TR>
+<TD width="20">
+<TD width="247"><IMG class="body_10x12" src="./rpi_files/homepagecat-v6_40.gif" alt="Rensselaer Connections" height="31" width="220" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="20">
+<TD width="13"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="13" border="0"></TD>
+<TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="20">
+<TD class="frnt_link_14x16" width="13">
+<TD class="frnt_link_14x16"><A title="Apply to Rensselaer Online" href="http://www.rpi.edu/dept/admissions/applynow.html">Apply Online</A></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="20">
+<TD width="13"><IMG src="./rpi_files/spacer.gif" alt="*" height="9" width="13" border="0"></TD>
+<TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="20" border="0"></TD>
+<TD class="frnt_link_14x16" width="13">
+<TD class="frnt_link_14x16"><A title="Official Rensselaer Athletics site" href="http://www.rpiathletics.com/">Athletics</A> <SPAN class="subhead_11x13"><SPAN class="subhead_11x13">| <A title="Weekly Athletics Review &amp; Preview" href="http://www.rpiathletics.com/news/2010/4/26/GEN_0426104257.aspx?path=gen">Weekly Review</A></SPAN></SPAN></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="20">
+<TD width="13"><IMG src="./rpi_files/spacer.gif" alt="*" height="9" width="13" border="0"></TD>
+<TD>
+<TD width="20">
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="20" border="0"></TD>
+<TD class="frnt_link_14x16" width="13">
+<TD class="frnt_link_14x16"><A title="Rensselaer Alumni Association (RAA)" href="http://www.alumni.rpi.edu/">Alumni/ae and Friends</A></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="20">
+<TD width="13"><IMG src="./rpi_files/spacer.gif" alt="*" height="9" width="13" border="0"></TD>
+<TD>
+<TD width="20">
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="20" border="0"></TD>
+<TD class="frnt_link_14x16" width="13">
+<TD class="frnt_link_14x16"><A title="Office of the First Year Experience" href="http://www.rpi.edu/fye/parents/about/index.html">Parents and Family</A></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="20">
+<TD width="13"><IMG src="./rpi_files/spacer.gif" alt="*" height="9" width="13" border="0"></TD>
+<TD>
+<TD width="20">
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="33"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="33" border="0"></TD>
+<TD class="subhead_14x17"><A title="Office of the President" href="http://rpi.edu/president/index.html">Office of the President</A></TD>
+<TD class="frnt_link_14x16" width="5"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="4" border="0"></TD>
+<TD width="25">
+</TR>
+<TR>
+<TD width="33">
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="3" width="10" border="0"></TD>
+<TD width="5">
+<TD width="25">
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="33"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="33" border="0"></TD>
+<TD class="body_10x12">The Honorable<BR>
+
+Shirley Ann Jackson, Ph.D.</TD>
+<TD width="15">
+</TR>
+<TR>
+<TD width="33">
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="6" width="10" border="0"></TD>
+<TD width="15">
+</TR>
+<TR>
+<TD width="33">
+<TD class="frnt_link_14x16"><A title="Giving to Rensselaer" href="http://www.rpi.edu/giving/index.html">Giving to Rensselaer</A></TD>
+<TD width="15">
+</TR>
+<TR>
+<TD width="33">
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD width="15">
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="33">
+<TD class="frnt_link_14x16"><A title="Sustainability at Rensselaer" href="http://sustainability.rpi.edu/">Sustainability at Rensselaer</A></TD>
+<TD width="15">
+</TR>
+<TR>
+<TD width="33">
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD width="15">
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+                                          <TBODY><TR>
+                                             <TD width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="20" border="0"></TD>
+                                             <TD class="frnt_link_14x16" width="13">
+                                             <TD class="frnt_link_14x16"><A title="People and Organizations" href="http://rpinfo.rpi.edu/directories.html">Rensselaer Directories</A></TD>
+                                             <TD width="20">
+                                          </TR>
+                                          <TR>
+                                             <TD width="20">
+                                             <TD width="13"><IMG src="./rpi_files/spacer.gif" alt="*" height="15" width="13" border="0"></TD>
+                                             <TD>
+                                             <TD width="20">
+                                          </TR>
+                                       </TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="20">
+<TD width="232"><IMG src="./rpi_files/spacer.gif" alt="*" height="6" width="10" border="0"></TD>
+<TD width="15">
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="20">
+<TD bgcolor="#31302b" width="222"><FONT color="#31302b"><IMG src="./rpi_files/spacer.gif" alt="*" height="1" width="10" border="0"></FONT></TD>
+<TD width="25">
+</TR>
+</TBODY></TABLE>
+<TABLE width="240" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="40" width="10" border="0"></TD>
+<TD width="220"><IMG class="body_10x12" src="./rpi_files/homepagecat-v6_29.gif" alt="Campus Events" height="38" width="220" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+</TD>
+</TR>
+<TR>
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="240" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD align="left" valign="top" width="33"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="33" border="0"></TD>
+<TD class="subhead_12x15" align="left" valign="top"><A title="RPI&lsquo;s Annual Dump and Run" href="http://shar.es/m5ArT">RPI’s Annual Dump and Run</A></TD>
+<TD align="left" valign="top" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="20" border="0"></TD>
+</TR>
+<TR>
+<TD align="left" valign="top" width="33">
+<TD align="left" valign="top"><IMG src="./rpi_files/spacer.gif" alt="*" height="2" width="10" border="0"></TD>
+<TD align="left" valign="top" width="20">
+</TR>
+<TR>
+<TD align="left" valign="top" width="33">
+<TD class="smalltext_9x11" align="left" valign="top">Mon., April 19 - Fri., May 21<BR>
+Rensselaer’s Troy Campus</TD>
+<TD align="left" valign="top" width="20">
+</TR>
+<TR>
+<TD align="left" valign="top" width="33">
+<TD align="left" valign="top"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD align="left" valign="top" width="20">
+</TR>
+</TBODY></TABLE>
+<TABLE width="240" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD align="left" valign="top" width="33"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="33" border="0"></TD>
+<TD class="subhead_12x15" align="left" valign="top"><A title="2010 President&#39;s Commencement Colloquy 2009" href="http://www.rpi.edu/about/colloquy/">2010 President’s<BR>
+ Commencement Colloquy</A></TD>
+<TD align="left" valign="top" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="20" border="0"></TD>
+</TR>
+<TR>
+<TD align="left" valign="top" width="33">
+<TD align="left" valign="top"><IMG src="./rpi_files/spacer.gif" alt="*" height="2" width="10" border="0"></TD>
+<TD align="left" valign="top" width="20">
+</TR>
+<TR>
+<TD align="left" valign="top" width="33">
+<TD class="smalltext_9x11" align="left" valign="top">“Re-Igniting the Innovation Economy: Science and Technology”<BR>
+Fri., May 28, 4-6 pm, EMPAC Concert Hall </TD>
+<TD align="left" valign="top" width="20">
+</TR>
+<TR>
+<TD align="left" valign="top" width="33">
+<TD align="left" valign="top"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD align="left" valign="top" width="20">
+</TR>
+</TBODY></TABLE>
+<TABLE width="240" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD align="left" valign="top" width="33"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="33" border="0"></TD>
+<TD class="subhead_12x15" align="left" valign="top"><A title="Commencement 2010" href="http://www.rpi.edu/academics/commencement/index.html">Commencement: Class of 2010</A></TD>
+<TD align="left" valign="top" width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="20" border="0"></TD>
+</TR>
+<TR>
+<TD align="left" valign="top" width="33">
+<TD align="left" valign="top"><IMG src="./rpi_files/spacer.gif" alt="*" height="2" width="10" border="0"></TD>
+<TD align="left" valign="top" width="20">
+</TR>
+<TR>
+<TD align="left" valign="top" width="33">
+<TD class="smalltext_9x11" align="left" valign="top">Saturday, May 29, 10:30 a.m.<BR>
+
+East Campus Athletic Village</TD>
+<TD align="left" valign="top" width="20">
+</TR>
+<TR>
+<TD align="left" valign="top" width="33">
+<TD align="left" valign="top"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD align="left" valign="top" width="20">
+</TR>
+</TBODY></TABLE>
+
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="33">
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="10" border="0"></TD>
+<TD width="15">
+</TR>
+<TR>
+<TD width="33"><IMG src="./rpi_files/spacer.gif" alt="*" height="5" width="33" border="0"></TD>
+<TD class="frnt_link_14x16"><A title="Rensselaer Calendar of Events" href="http://events.rpi.edu/">Institute Events Calendar</A></TD>
+<TD width="15">
+</TR>
+<TR>
+<TD width="33">
+<TD><IMG src="./rpi_files/spacer.gif" alt="*" height="22" width="10" border="0"></TD>
+<TD width="15">
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+<TBODY><TR>
+<TD width="20">
+<TD bgcolor="#31302b" width="222"><IMG src="./rpi_files/spacer.gif" alt="*" height="1" width="10" border="0"></TD>
+<TD width="25">
+</TR>
+</TBODY></TABLE>
+<TABLE width="267" border="0" cellspacing="0" cellpadding="0">
+                                 <TBODY><TR>
+<TD width="33"><IMG src="./rpi_files/spacer.gif" alt="*" height="19" width="33" border="0"></TD>
+<TD width="214">
+<TD width="20"><IMG src="./rpi_files/spacer.gif" alt="*" height="18" width="20" border="0"></TD>
+</TR>
+                                 <TR>
+<TD width="33">
+<TD class="frnt_newshead_12x14" width="214"><A title="Map and Directions to Campus" href="http://rpi.edu/tour/directions.html">Map &amp; Directions</A></TD>
+<TD width="20">
+</TR>
+                                 <TR>
+<TD width="33">
+<TD width="214"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD class="frnt_newshead_12x14" width="214"><A title="Division of Human Resources" href="http://hr.rpi.edu/setup.do">Human Resources</A></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD width="214"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD class="frnt_newshead_12x14" width="214"><A title="Entrepreneurship at Rensselaer" href="http://rpi.edu/academics/entrepreneurship.html">Entrepreneurship</A></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD class="frnt_newshead_12x14" width="214"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD class="frnt_newshead_12x14" width="214"><A title="Technology Commercialization" href="http://www.rpitechnology.com/">Technology Commercialization</A></TD>
+<TD width="20">
+</TR>
+<TR height="10">
+<TD width="33" height="10">
+<TD width="214" height="10"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD width="20" height="10">
+</TR>
+<TR>
+<TD width="33">
+<TD class="frnt_newshead_12x14" width="214"><A title="Incubator Program" href="http://www.incubator.com/">Incubator Program</A></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD width="214"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD class="frnt_newshead_12x14" width="214"><A title="Rensselaer: American Recovery and Reinvestment Act Funding" href="http://www.rpi.edu/news/arra/">American Recovery<BR>
+and Reinvestment Act (ARRA)</A></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD width="214"><IMG src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD class="frnt_newshead_12x14" width="214"><A href="http://rpinfo.rpi.edu/">RPInfo</A>&nbsp;&nbsp;<SPAN class="smalltext_9x11">(for students, faculty &amp; staff)</SPAN></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD width="214"><IMG src="./rpi_files/spacer.gif" alt="*" height="4" width="10" border="0"></TD>
+<TD width="20">
+</TR>
+<TR>
+<TD width="33">
+<TD width="214"><IMG src="./rpi_files/spacer.gif" alt="*" height="15" width="10" border="0"></TD>
+<TD width="20">
+</TR>
+</TBODY></TABLE>
+</TD>
+</TR>
+</TBODY></TABLE>
+</TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="960" border="0" cellspacing="0" cellpadding="0" bgcolor="white">
+<TBODY><TR>
+<TD><IMG class="body_11x15" src="./rpi_files/spacer.gif" alt="*" height="20" width="10" border="0"></TD>
+</TR>
+<TR>
+<TD class="body_11x13" align="center" valign="middle">
+<DIV align="center">
+<A title="Privacy Policy" href="http://rpi.edu/site/privacy.html">Privacy Policy</A> | <A title="Media Policy" href="http://rpi.edu/news/resource/media.html">Media Policy</A> | <A title="Copyright Notice" href="http://rpi.edu/site/copyright.html">Copyright Notice</A> | <A title="Your Feedback" href="http://rpi.edu/site/feedback.html">Your Feedback</A> | <A title="Contact Us" href="http://rpinfo.rpi.edu/contact.html">Contact Us</A> |  <A title="Search RPI Web sites" href="http://rpi.edu/site/searchrpi.html">Search</A></DIV>
+</TD>
+</TR>
+<TR>
+<TD align="center" valign="middle"><IMG class="body_11x15" src="./rpi_files/spacer.gif" alt="*" height="10" width="10" border="0"><IMG class="body_11x15" src="./rpi_files/spacer.gif" alt="*" height="15" width="10" border="0"></TD>
+</TR>
+</TBODY></TABLE>
+<TABLE width="960" border="0" cellspacing="0" cellpadding="2" bgcolor="white">
+<TBODY><TR>
+<TD class="body_10x12" align="center" valign="middle" width="124">
+<DIV align="center"></DIV>
+</TD>
+<TD class="body_10x12" align="center" valign="middle" width="700">Copyright ©2010 Rensselaer Polytechnic Institute (RPI)&nbsp;&nbsp;110 Eighth Street, Troy, NY USA 12180&nbsp;&nbsp;(518) 276-6000</TD>
+<TD class="body_10x12" align="center" valign="middle" width="124">
+</TR>
+<TR>
+<TD width="124"><IMG class="body_11x15" src="./rpi_files/spacer.gif" alt="*" height="5" width="124" border="0"></TD>
+<TD width="700">
+<TD width="124"><IMG class="body_11x15" src="./rpi_files/spacer.gif" alt="*" height="5" width="124" border="0"></TD>
+</TR>
+<TR>
+<TD class="smalltext_9x11" width="124">
+<DIV align="center">
+</DIV>
+</TD>
+<TD class="smalltext_9x11" align="center" valign="middle" width="700">
+<DIV align="center">
+Rensselaer is America’s oldest technological research university, offering bachelor’s, master’s, and doctoral degrees in engineering, the sciences, IT, architecture, management, and the humanities, arts, and social sciences.</DIV>
+</TD>
+<TD class="smalltext_9x11" width="124">
+</TR>
+<TR>
+<TD width="124"><IMG class="body_11x15" src="./rpi_files/spacer.gif" alt="*" height="5" width="10" border="0"></TD>
+<TD width="700">
+<TD width="124">
+</TR>
+</TBODY></TABLE>
+<TABLE width="960" border="0" cellspacing="0" cellpadding="0" bgcolor="white">
+<TBODY><TR>
+<TD><IMG class="body_11x15" src="./rpi_files/spacer.gif" alt="*" height="5" width="10" border="0"></TD>
+</TR>
+<TR>
+<TD bgcolor="#f7001f"><FONT color="#006388"><IMG src="./rpi_files/spacer.gif" alt="*" height="8" width="10" border="0"></FONT></TD>
+</TR>
+</TBODY></TABLE>
+<INPUT name="siteurl" type="hidden" value="rpi.edu/"></FORM>
+<SCRIPT type="text/javascript" src="./rpi_files/brand"></SCRIPT>
+</DIV>
+
+
+</BODY></HTML>
