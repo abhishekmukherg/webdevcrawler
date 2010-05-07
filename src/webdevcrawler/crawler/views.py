@@ -62,6 +62,10 @@ def search(request, limit=10):
                 .annotate(Count('href'))
                 .order_by()[:limit]
                 .values('href', 'title'))
-    return HttpResponse("{callback}({json});".format(
-                                callback=request.GET['callback'],
-                                json=json.dumps(results)))
+    if 'callback' not in request.GET:
+        return HttpResponse(json.dumps(results), mimetype="application/json")
+    else:
+        return HttpResponse("{0}({1});".format(
+                                request.GET['callback'],
+                                json.dumps(results)),
+                                mimetype="text/javascript")
