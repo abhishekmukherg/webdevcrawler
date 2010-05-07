@@ -60,8 +60,7 @@ def _process_url(url_manager, limit_domain):
         url = _get_or_create(Url, save=True, href=href)
 
         for keyword in set(map(
-                lambda x: x[:Keyword._meta.get_field('word').max_length]
-                             .lower(),
+                lambda x: x[:Keyword._meta.get_field('word').max_length],
                 keywords)):
             m = _get_or_create(Keyword, save=True, word=keyword)
             url.keyword_set.add(m)

@@ -58,7 +58,7 @@ def search(request, limit=10):
     results = map(
             lambda x: {'href': x['href'], 'title': x['title'] or x['href']},
             models.Url.objects.filter(
-                keyword__word__contains=request.GET['q'].lower())
+                keyword__word__icontains=request.GET['q'])
                 .annotate(Count('href'))
                 .order_by()[:limit]
                 .values('href', 'title'))
