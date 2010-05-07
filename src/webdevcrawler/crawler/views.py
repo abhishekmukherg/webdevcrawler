@@ -9,6 +9,7 @@ from django.shortcuts import render_to_response, redirect
 from django.template import loader
 from django.template import RequestContext
 from django.db.models import Count
+from django.db.models import Q
 
 from django.db import transaction
 try:
@@ -55,17 +56,27 @@ def crawl(request):
 def search(request, limit=10):
     if 'q' not in request.GET:
         raise Http404
-    results = map(
-            lambda x: {'href': x['href'], 'title': x['title'] or x['href']},
-            models.Url.objects.filter(
-                keyword__word__icontains=request.GET['q'])
-                .annotate(Count('href'))
-                .order_by()[:limit]
-                .values('href', 'title'))
-    if 'callback' not in request.GET:
-        return HttpResponse(json.dumps(results), mimetype="application/json")
+    if 'offset' in request.GET:
+        limit = int(request.GET['offset']) + 10
+        offset = int(request.GET['offset'])
     else:
-        return HttpResponse("{0}({1});".format(
-                                request.GET['callback'],
-                                json.dumps(results)),
-                                mimetype="text/javascript")
+        offset = 0
+        limit = 10
+    urls = models.Url.objects.filter(
+            Q(keyword__word__icontains=request.GET['q']) |
+            Q(title__icontains=request.GET['q']) ).distinct()[offset:limit]
+    count = models.Url.objects.filter(
+            Q(keyword__word__icontains=request.GET['q']) |
+            Q(title__icontains=request.GET['q']) ).distinct().count()
+    results = []
+    for url in urls:
+        for keyword in url.keyword_set.all():
+            if request.GET['q'].lower()  in keyword.word.lower() or \
+                    request.GET['q'].lower()  in url.title.lower():
+                results.append(
+                        {"href": url.href,
+                            "title": url.title or "",
+                            "keyword": keyword.word})
+                break
+    result = json.dumps({'count': count, 'results': results})
+    return HttpResponse('{0}({1})'.format(request.GET['callback'], result))
